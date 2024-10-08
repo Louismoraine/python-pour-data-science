@@ -1,2 +1,3 @@
 # python-pour-data-science
-le chêne un jour dit au roseau
+Le chêne un jour dit au roseau :
+Vous avez bien sujet d'accuser la Nature
