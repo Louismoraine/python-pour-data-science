@@ -1,2 +1,2 @@
 print('b')
-print('d)
+print('d')
