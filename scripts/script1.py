@@ -18,6 +18,4 @@ communes_borders.crs
 communes_borders = communes_borders.to_crs(2154)
 communes_92 = communes_borders.loc[communes_borders["INSEE_DEP"]=="92"]
 communes_92.crs
-fig, ax = plt.subplots()
 communes_92.plot()
-plt.show()
