@@ -14,13 +14,34 @@ def lecture_excel():
     # Renommer les variables
     df = df.rename(columns={'alim_grp_nom_fr': 'Groupe', 'alim_ssgrp_nom_fr':'Sous-groupe', 'alim_ssssgrp_nom_fr':'Sous-sous-groupe', 'alim_nom_fr':'Nom', 'Energie, Règlement UE N° 1169/2011 (kcal/100 g)': 'Calories', 'Sucres (g/100 g)' : 'Sucres', 'Fibres alimentaires (g/100 g)' : 'Fibres', 'Protéines, N x 6.25 (g/100 g)' : 'Protéines', 'Glucides (g/100 g)' : 'Glucides', 'Lipides (g/100 g)' : 'Lipides'})
 
+    # Calories
+    categ_a_supprimer=['salades composées et crudités', 'soupes', 'plats composés',
+    'pizzas, tartes et crêpes salées', 'sandwichs',
+    'feuilletées et autres entrées',
+    'pains et assimilés', 'biscuits apéritifs', 
+    'autres produits à base de viande', 
+    'produits à base de poissons et produits de la mer', 
+    'substitus de produits carnés', 
+    'crèmes et spécialités à base de crème', 'eaux', 'boissons sans alcool',
+    'confiseries non chocolatées',
+    'confitures et assimilés', 'viennoiseries', 'biscuits sucrés',
+    'céréales de petit-déjeuner', 'barres céréalières',
+    'gâteaux et pâtisseries', '-', 'glaces', 'sorbets', 'desserts glacés',
+    'huiles de poissons',
+    'aides culinaires', 
+    'denrées destinées à une alimentation particulière',
+    'aides culinaires et ingrédients pour végétariens', 'ingrédients divers',
+    'laits et boissons infantiles', 'petits pots salés et plats infantiles',
+    'desserts infantiles', 'céréales et biscuits infantiles']
+    df_calories = df[~df['Sous-groupe'].isin(categ_a_supprimer)]
+    df_calories = df_calories.loc[:,["Nom","Calories"]]
+
     # Noms des Groupes et Sous-groupes en majuscule
     df['Groupe'] = df['Groupe'].str.title()
     df['Sous-groupe'] = df['Sous-groupe'].str.title()
 
     # Elimination des plats composés
     df = df[~df["Groupe"].isin(['Entrées Et Plats Composés','Glaces Et Sorbets','Aliments Infantiles'])]
-    df_calories = df.loc[:,["Nom","Calories"]]
 
     # Supression des valeurs manquantes
     df_svm = df.replace(to_replace=r'^<.*', value=np.nan, regex=True)
@@ -41,7 +62,6 @@ def lecture_excel():
     df_calories["Calories"] = pd.to_numeric(df_calories["Calories"].str.replace(',', '.', regex=False))
 
     return df_calories,df_svm
-
 
 
 
