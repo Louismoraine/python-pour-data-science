@@ -24,8 +24,8 @@ Un des premiers obstacles a été les cookies. Le site propose de les accepter o
 
 Dans le dossier scraper se trouvent deux fichiers:
 
-    - installation_chrome.ipynb : dont l'exécution permet d'installer Chrome ainsi que le webdriver nécessaires au scraping.
-    - scraper_marmiton_selenium.py : contient le scraper, ce scraper prend en argument deux ingrédients proposés par l'utilisateur ainsi qu'un entier naturel n et renvoie n recettes utilisant les deux ingrédients proposés. 
+    - *installation_chrome.ipynb* : dont l'exécution permet d'installer Chrome ainsi que le webdriver nécessaires au scraping.
+    - *scraper_marmiton_selenium.py* : contient le scraper, ce scraper prend en argument deux ingrédients proposés par l'utilisateur ainsi qu'un entier naturel n et renvoie n recettes utilisant les deux ingrédients proposés. 
 
 
 # Etape 2 - Statistiques descriptives
