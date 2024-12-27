@@ -5,13 +5,37 @@ Vous arrive-t-il d'ouvrir le frigo et de voir les quelques aliments qu'il serait
 Alors ce projet est fait pour vous!  
 L'objectif est de vous proposer des recettes vous permettant d'utiliser les ingrédients qui traînent dans votre frigo plutôt que de les gâcher. Le programme vous renverra la recette la moins calorique vous permettant d'utiliser ces ingrédients!
 
+
+# Etape 1 - Obtention des données sur les calories et statistiques descriptives
+
+- **Données Ciqual de l'ANSES** obtenues sur data.gouv.
+Nous avons importé la bases de données concernant la composition nutritionnelle de plus de 3000 aliments. Les informations apportées par cette base de données concernent par exemple l'apport calorique, en fibre, sucres, sel ou encore l'apport en différentes vitamines par 100 grammes d'aliment.
+
+L'import et le nettoyage de ces données se fait à l'aide du module lecture_ciqual.py. Ce module contient la fonction lecture_excel() renvoyant trois dataframes df_calories, df_svm et df.
+- df : Contient les données des ingrédients uniquement : les plats composés tels que salades composées, crudités, soupes, pizzas, tartes et sandwichs ont été supprimés. Seules les variables quantitatives suivantes ont été conservées : Calories, Protéines et Glucides.
+
+- df_svm : Obtenu après supression des valeurs manquantes et conversion des variables quantitatives en numérique. Ce dataframe permettra d'effectuer les statistiques descriptives.
+
+- df_calories : Restriction de df aux deux colonnes Nom et Calories, ce dataframe permettra de calculer le nombre de calories d'une recette.
+
+Le notebook données.ipynb présente des statistiques descriptives en faisant appel à la fonction lecture_excel du module lecture_ciqual.py. Les principaux résultats obtenus sont les suivants :
+
+- Les groupes ayant le plus d'ingrédients sont dans l'ordre 'Viandes, Œufs, Poissons Et Assimilés', 'Fruits, Légumes, Légumineuses Et Oléagineux' et 'Produits Laitiers Et Assimilés'.
+
+- Les catégories qui sont en moyenne les plus caloriques sont, sans grande surprise, les matières grasses, huiles & graisses végétales, suivies par d'autres graisses, les graines et les chocolats. Les catégories les moins caloriques en moyenne sont les fruits, les légumes et les mollusques.
+
+- Les viandes, œufs et poissons ont davantage de protéines.
+
+- Les produits céréaliers et les produits sucrés ont davantage de glucides.
+
+
 # Etape 1 - Obtention des données
 
 - **Données Ciqual de l'ANSES** obtenues sur data.gouv.
 Nous avons importé la base de données concernant la composition nutritionnelle de plus de 3000 aliments. Les informations apportées par cette base de données concernent par exemple l'apport calorique, en fibre, sucres, sel ou encore l'apport en différentes vitamines par 100 grammes d'aliment.
 
 L'import de ces données se fait à l'aide du module lecture_ciqual.py. Ce module contient la fonction lecture_excel() renvoyant trois dataframes df_calories, df_svm et df.
-    - df : Contient les données des ingrédients uniquement : les plats composés tels que salades composées, crudités, soupes, pizzas, tartes et sandwichs ont été supprimés. Seules les variables quantitatiques suivantes ont été conservées : Calories, Protéines et Glucides.
+    - df : Contient les données des ingrédients uniquement : les plats composés tels que salades composées, crudités, soupes, pizzas, tartes et sandwichs ont été supprimés. Seules les variables quantitatives suivantes ont été conservées : Calories, Protéines et Glucides.
     - df_svm : Obtenu après supression des valeurs manquantes et conversion des variables quantitatives en numérique. Ce dataframe permettra d'effectuer les statistiques descriptives
     - df_calories : Restriction de df aux deux colonnes Nom et Calories, ce dataframe permettra de calculer le nombre de calories d'une recette.
 
