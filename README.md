@@ -11,7 +11,8 @@ L'objectif est de vous proposer des recettes vous permettant d'utiliser les ingr
 - **Données Ciqual de l'ANSES** obtenues sur data.gouv.
 Nous avons importé la bases de données concernant la composition nutritionnelle de plus de 3000 aliments. Les informations apportées par cette base de données concernent par exemple l'apport calorique, en fibre, sucres, sel ou encore l'apport en différentes vitamines par 100 grammes d'aliment.
 
-L'import et le nettoyage de ces données se fait à l'aide du module lecture_ciqual.py. Ce module contient la fonction lecture_excel() renvoyant trois dataframes df_calories, df_svm et df.
+L'import et le nettoyage de ces données se fait à l'aide du module lecture_ciqual.py. Ce module contient la fonction lecture_excel() renvoyant trois dataframes df_calories, df_svm et df :
+
 - df : Contient les données des ingrédients uniquement : les plats composés tels que salades composées, crudités, soupes, pizzas, tartes et sandwichs ont été supprimés. Seules les variables quantitatives suivantes ont été conservées : Calories, Protéines et Glucides.
 
 - df_svm : Obtenu après supression des valeurs manquantes et conversion des variables quantitatives en numérique. Ce dataframe permettra d'effectuer les statistiques descriptives.
@@ -20,13 +21,15 @@ L'import et le nettoyage de ces données se fait à l'aide du module lecture_ciq
 
 Le notebook données.ipynb présente des statistiques descriptives en faisant appel à la fonction lecture_excel du module lecture_ciqual.py. Les principaux résultats obtenus sont les suivants :
 
-- Les groupes ayant le plus d'ingrédients sont dans l'ordre 'Viandes, Œufs, Poissons Et Assimilés', 'Fruits, Légumes, Légumineuses Et Oléagineux' et 'Produits Laitiers Et Assimilés'.
+- Les groupes ayant le plus d'ingrédients sont 'Viandes, Œufs, Poissons Et Assimilés' et 'Fruits, Légumes, Légumineuses Et Oléagineux'.
+
+- Dans chaque catégorie d'aliments, on observe une plage assez large de valeurs pour les calories.
 
 - Les catégories qui sont en moyenne les plus caloriques sont, sans grande surprise, les matières grasses, huiles & graisses végétales, suivies par d'autres graisses, les graines et les chocolats. Les catégories les moins caloriques en moyenne sont les fruits, les légumes et les mollusques.
 
-- Les viandes, œufs et poissons ont davantage de protéines.
+- Les produits céréaliers et les produits sucrés sont des catégories d'ingrédients riches en glucides.
 
-- Les produits céréaliers et les produits sucrés ont davantage de glucides.
+- Les viandes, œufs et poissons ont davantage de protéines.
 
 
 # Etape 1 - Obtention des données
